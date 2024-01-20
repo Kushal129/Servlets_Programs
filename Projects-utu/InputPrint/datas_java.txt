@@ -1,0 +1,49 @@
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+
+@WebServlet("/datas")
+public class datas extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	            throws ServletException, IOException {
+	        response.setContentType("text/html;charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+
+	        try {
+	            String name = request.getParameter("name");
+	            String password = request.getParameter("password");
+	            String email = request.getParameter("email");
+	            String contact = request.getParameter("contact");
+	            String gender = request.getParameter("gender");
+	            String course = request.getParameter("course");
+	            String terms = request.getParameter("terms");
+
+	            if (terms != null && terms.equals("on")) {
+	                out.println("<html><body>");
+	                out.println("<h2>Registration Details:</h2>");
+	                out.println("<p>Name: " + name + "</p>");
+	                out.println("<p>Password: " + password + "</p>");
+	                out.println("<p>Email: " + email + "</p>");
+	                out.println("<p>Contact No: " + contact + "</p>");
+	                out.println("<p>Gender: " + gender + "</p>");
+	                out.println("<p>Course: " + course + "</p>");
+	                out.println("</body></html>");
+	            } else {
+	                out.println("<html><body>");
+	                out.println("<p>Please accept the terms and conditions to register.</p>");
+	                out.println("</body></html>");
+	            }
+	        } finally {
+	            out.close();
+	        }
+	    }
+	}
+

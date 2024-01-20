@@ -1,0 +1,44 @@
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+
+public class addcookie extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		try {
+			resp.setContentType("text/html");
+			PrintWriter out = resp.getWriter();
+			
+			String n = req.getParameter("data");
+			out.print("Welcome " + n);
+			
+			Cookie ck = new Cookie("uname",n);
+			
+			resp.addCookie(ck);
+			
+//			get method use karvi padse  doget (s-2 ma)
+			//out.print("<a href='readr'>click");
+			
+//			post mate form e submit karavanu
+			// Create a form to submit a POST request to readr servlet
+            out.print("<form action='readr' method='post'>");
+            out.print("<input type='submit' value='click'>");
+            out.print("</form>");
+			out.close();
+;		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+}
