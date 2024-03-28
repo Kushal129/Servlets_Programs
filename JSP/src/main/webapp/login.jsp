@@ -1,4 +1,3 @@
-<%@page import="com.mysql.cj.xdevapi.PreparableStatement"%>
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -18,7 +17,7 @@
         
         if (email != null && password != null) {
             try {
-            	 Class.forName("com.mysql.cj.jdbc.Driver");
+            	 Class.forName("com.mysql.jdbc.Driver");
                  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
                  
                  String qry = "SELECT * FROM students WHERE email = ? AND password = ?";

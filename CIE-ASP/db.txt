@@ -1,0 +1,18 @@
+-- User table
+CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY,
+    FullName NVARCHAR(100),
+    Email NVARCHAR(100),
+    Password NVARCHAR(100),
+    Role BIT DEFAULT 1
+);
+
+-- Event table
+CREATE TABLE Events (
+    Id INT PRIMARY KEY IDENTITY,
+    FullName NVARCHAR(100),
+    ContactNumber NVARCHAR(20),
+    EventDateTime DATETIME,
+    EventOption NVARCHAR(50),
+    Description NVARCHAR(MAX)
+);
